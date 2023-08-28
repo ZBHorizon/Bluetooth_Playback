@@ -50,7 +50,7 @@ int Bluetooth_Playback::Initialize(HINSTANCE hInstance){
     nid.uVersion = NOTIFYICON_VERSION;
     nid.uCallbackMessage = WM_APP + 1;
     nid.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-    strcpy_s(nid.szTip, sizeof(nid.szTip), "Hallo Welt!");
+    strcpy_s(nid.szTip, sizeof(nid.szTip), "this is a hover field");
     nid.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
 
     Shell_NotifyIcon(NIM_ADD, &nid);
@@ -67,7 +67,7 @@ int Bluetooth_Playback::Run() {
         TranslateMessage(&message);
         DispatchMessage(&message);
     }
-    return message.wParam;
+    return static_cast<int>(message.wParam);
 }
 
 //////////////////////////////////////////////////////////WndProc//////////////////////////////////////////////////////////
