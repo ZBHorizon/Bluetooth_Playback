@@ -7,7 +7,4 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     if (errorcode != 0) return errorcode;
 
     return btinstance.Run();
-    
 }
-
-
