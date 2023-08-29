@@ -12,14 +12,6 @@ This is a simple Windows Tray Application written in C++ using the Win32 API. Th
 - Lists available Bluetooth devices for connection
 - Streams audio from the connected Bluetooth device
 
-
-
-## Installation
-
-1. Clone the repository to your local machine.
-2. Open the solution file in Visual Studio.
-3. Build the solution.
-
 ## Usage
 
 1. Run the executable.
