@@ -22,7 +22,7 @@
     <ClCompile Include="Bluetooth_Playback.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,13 +30,18 @@
     <ClInclude Include="Bluetooth_Playback.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Bluetooth_Playback.ico">
+    <Image Include="Icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="small.ico">
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
       <Filter>Resource Files</Filter>
-    </Image>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

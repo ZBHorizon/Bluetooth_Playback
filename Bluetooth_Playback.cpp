@@ -44,16 +44,15 @@ int Bluetooth_Playback::Initialize(HINSTANCE hInstance){
     );
 
     // Tray Icon initialisieren
-    nid.cbSize = sizeof(NOTIFYICONDATA);
-    nid.hWnd = hWnd;
-    nid.uID = 1;
-    nid.uVersion = NOTIFYICON_VERSION;
-    nid.uCallbackMessage = WM_APP + 1;
-    nid.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-    strcpy_s(nid.szTip, sizeof(nid.szTip), "this is a hover field");
-    nid.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
-
-    Shell_NotifyIcon(NIM_ADD, &nid);
+    nid.cbSize = sizeof(NOTIFYICONDATA); 
+    nid.hWnd = hWnd; 
+    nid.uID = 1; // Eindeutige ID für das Icon (muss eindeutig innerhalb der Anwendung sein)
+    nid.uVersion = NOTIFYICON_VERSION; 
+    nid.uCallbackMessage = WM_APP + 1; // für die Interaktion (links oder rechtsklick aufs icon)
+    nid.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(ID_ICON)); // MAKEINTRESOURCE und ID_ICON(Icon.ico von Recource.h) wandeln die Ressourcen-ID in eine Zeichenfolge um, die LoadIcon verstehen kann
+    strcpy_s(nid.szTip, sizeof(nid.szTip), "Bluetooth Playback"); 
+    nid.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP; // Flags, die angeben, welche der vorherigen Felder verwendet werden sollen
+    Shell_NotifyIcon(NIM_ADD, &nid); // Fügt das Icon zum System-Tray hinzu
 
     return 0;
 }
@@ -74,33 +73,29 @@ int Bluetooth_Playback::Run() {
 
 LRESULT CALLBACK Bluetooth_Playback::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
-    case WM_APP + 1:
-        if (lParam == WM_RBUTTONDOWN) {
-            POINT pt;
-            GetCursorPos(&pt);
-            HMENU hMenu = CreatePopupMenu();
-            AppendMenu(hMenu, MF_STRING, 1000, "Beenden");
+        case WM_APP + 1:{
+            if (lParam == WM_RBUTTONDOWN) {
+                POINT pt;
+                GetCursorPos(&pt);
+                HMENU hMenu = CreatePopupMenu();
+                AppendMenu(hMenu, MF_STRING, 1000, "Beenden");
+                SetForegroundWindow(hWnd);
+                TrackPopupMenu(hMenu, TPM_BOTTOMALIGN, pt.x, pt.y, 0, hWnd, NULL);
+                PostMessage(hWnd, WM_NULL, 0, 0);
 
-            SetForegroundWindow(hWnd);
-            TrackPopupMenu(hMenu, TPM_BOTTOMALIGN, pt.x, pt.y, 0, hWnd, NULL);
-            PostMessage(hWnd, WM_NULL, 0, 0);
-
-            DestroyMenu(hMenu);
-        }
-        break;
-    case WM_COMMAND:
-        if (LOWORD(wParam) == 1000) {
-            DestroyWindow(hWnd);
-        }
-        break;
-    case WM_CLOSE:
-        DestroyWindow(hWnd);
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, msg, wParam, lParam);
+                DestroyMenu(hMenu);
+            }
+        }break;
+            
+        case WM_COMMAND: {
+            if (LOWORD(wParam) == 1000) {
+                DestroyWindow(hWnd);
+            }
+        } break;
+        case WM_CLOSE: DestroyWindow(hWnd); break;
+        case WM_DESTROY: PostQuitMessage(0); break;
+        default:
+            return DefWindowProc(hWnd, msg, wParam, lParam);
     }
     return 0;
 }
