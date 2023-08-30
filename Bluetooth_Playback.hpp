@@ -1,5 +1,5 @@
 #include <windows.h>
-#include "resource.h"
+
 
 class Bluetooth_Playback {
 /////////////////////////////////////////////////////////////////////public//////////////////////////////////////////////////////////////
@@ -20,4 +20,5 @@ private:
 	// Klassen Variablen
 	NOTIFYICONDATA nid;
 	HWND hWnd;
+	HINSTANCE hInstance;
 };

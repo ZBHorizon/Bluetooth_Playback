@@ -35,7 +35,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Icon.ico">
+    <Image Include="Dark_Icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Light_Icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

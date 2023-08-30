@@ -1,9 +1,13 @@
 // Inkludiert die Header-Datei, die die Ressourcen-IDs enthält
 #include "resource.h"
+/////////////////////////////////////////////////////////////////////////////
 
 // Definiert den Zeichensatz für die Ressourcen
 #pragma code_page(1252)
 
 // Definiert das Anwendungsicon
 // Die ID (ID_ICON) und der Dateipfad ("Icon.ico") sind angegeben
-ID_ICON ICON "Icon.ico"
+ID_DARK_ICON            ICON                    "Dark_Icon.ico"
+ID_LIGHT_ICON            ICON                    "Light_Icon.ico"
+
+

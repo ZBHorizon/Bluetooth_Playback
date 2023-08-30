@@ -2,7 +2,8 @@
 // Von Microsoft Visual C++ generierte Includedatei.
 // Verwendet durch Resource.rc
 //
-#define ID_ICON                         102
+#define ID_DARK_ICON                    101
+#define ID_LIGHT_ICON                   102
 
 // Next default values for new objects
 // 
