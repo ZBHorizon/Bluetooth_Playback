@@ -1,0 +1,15 @@
+<!--
+  Copyright (c) Microsoft Corporation. Licensed under the MIT License
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.ProjectReunion.Package.props" Condition="Exists('$(MSBuildThisFileDirectory)Microsoft.ProjectReunion.Package.props')" />
+  <PropertyGroup>
+      <ProjectReunionWinUI Condition="'$(ProjectReunionFrameworkPackage)'=='true'">true</ProjectReunionWinUI>
+      <ProjectReunionWinUI Condition="'$(ProjectReunionFrameworkPackage)'=='false'">false</ProjectReunionWinUI>
+      <ProjectReunionWinUI Condition="'$(ProjectReunionWinUI)'==''">true</ProjectReunionWinUI>
+      <ProjectReunionInApp Condition="'$(ProjectReunionFrameworkPackage)'=='true'">false</ProjectReunionInApp>
+      <ProjectReunionInApp Condition="'$(ProjectReunionFrameworkPackage)'=='false'">true</ProjectReunionInApp>
+      <ProjectReunionInApp Condition="'$(ProjectReunionInApp)'==''">false</ProjectReunionInApp>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.WinUI.props" />
+</Project>
